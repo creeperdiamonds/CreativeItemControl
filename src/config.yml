@@ -1,0 +1,72 @@
+# Creative Item Control Plugin Config
+# This plugin is designed to give full control over item data to server administrators, especially those
+# with creative mode worlds or servers
+
+config:
+  enabled: true # Is plugin enabled?
+  player-alerts: true # Send a message to the player attempting to get the item
+  alert-cooldown: 1000 # Cooldown (in milliseconds) between each alert message
+
+  worlds: # Worlds in which the plugin is active
+    - example
+  blacklist: false # If true, above worlds config will act as a blacklist
+
+  give-cooldown: 0 # Cooldown for /cic give command. cic.admin will bypass this
+
+  check-dispensers: true # When true, dispensers won't be able to dispense blocked items
+
+  per-item-permissions: true
+
+
+
+enchantments:
+  # By default, only regular enchantments and levels will be allowed.
+  # Action to take when impossible enchants are found. Options:
+  # LOWER - Set enchants to the highest possible value for that item
+  # REMOVE - Remove enchantments from the item all-together
+  # DELETE - Delete the item
+  enabled: true # Enable enchantment checks?
+  action: LOWER
+  allow-incompatible: false # Whether or not to allow incompatible enchantments (Sharpness with Smite, Infinity with Mending, etc.)
+
+attributes:
+  # By default, no attribute modifying items will be allowed
+  # Action to take when attribute modifiers are found. Options:
+  # REMOVE - Remove the attribute modifiers from the item
+  # DELETE - Delete the item
+  enabled: true
+  action: DELETE
+
+potions:
+  enabled: true
+
+
+components: # Deny specific components. List of components can be found here https://minecraft.wiki/w/Data_component_format
+  enabled: false
+  blocked: # List of components to block
+    - minecraft:example_component
+
+# ----------------------------- Messages -------------------------------------
+messages:
+  alerts:
+    components: '<b><red>Items with custom components are not allowed here!'
+    attributes: '<b><red>Items with attribute modifiers are not allowed here!'
+    enchantments: '<b><red>Items with impossible enchantments are not allowed here!'
+    potions: '<b><red>Custom potions are not allowed here!'
+
+  commands:
+    exclude: '&aStored {type} as "{id}".'
+    remove: '&aRemoved excluded item "{id}".'
+    listempty: '&eNo excluded items stored.'
+    # Give Command
+    give: '&aGave "{id}" to &f&a{player}.'
+    giveinvalid: '&cNo excluded item found with id "{id}".'
+    giveothers: '&cYou do not have permission to give to other players!'
+    playernotfound: '&cPlayer "{player}" not found.'
+    specifyplayer: '&cSpecify a player: /cic give <id> <player>'
+    invalidworld: '&cYou cannot use this in this world!'
+    oncooldown: '&cYou must wait {time}s before receiving this item again.'
+
+    noperm: '&cYou do not have permission!'
+
+

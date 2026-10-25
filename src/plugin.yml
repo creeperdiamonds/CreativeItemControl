@@ -1,0 +1,35 @@
+name: CreativeItemControl
+version: '2.0'
+main: net.kingidk.creativeItemControl.CreativeItemControl
+api-version: '1.21'
+authors: [ Kingidk ]
+folia-supported: true
+commands:
+  cic:
+    description: Main CreativeItemControl command
+    usage: /cic <reload|store|give>
+permissions:
+  cic.bypass.*:
+    description: Bypass all checks
+    default: op
+  cic.bypass.enchantments:
+    description: Bypass enchantment checks
+    default: op
+  cic.bypass.attributes:
+    description: Bypass attribute checks
+    default: op
+  cic.bypass.potions:
+    description: Bypass custom potion checks
+    default: op
+  cic.bypass.components:
+    description: Bypass component checks
+    default: op
+  cic.admin:
+    description: Admin Commands
+    default: op
+  cic.give.*:
+    description: Give access to all excluded items to give
+    default: op
+    children:
+      - cic.give
+
